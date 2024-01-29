@@ -2,81 +2,53 @@
 
 1. Easy: Understanding Bubble Sort
 
-Pass 1 :
+Manually sort the array [5, 2, 8, 1, 3] using the bubble sort technique.writedown each step of the process.
 
-    Start with the array[5, 2, 8, 1, 3].
-    Compare adjacent elements :
-Compare 5 and 2 : Since 5 > 2, swap them : [2, 5, 8, 1, 3] .
-Compare 5 and 8 : No swap needed.
-Compare 8 and 1 : Since 8 > 1, swap them : [2, 5, 1, 8, 3] .
-Compare 8 and 3 : Since 8 > 3, swap them : [2, 5, 1, 3, 8] .
-After Pass 1 : [2, 5, 1, 3, 8]
+step 1:-in the case of array [5,2,8,1,3] 5 is greater than 2.so the 5 takes the position of 2 and
+        the array becomes [2,5,8,1,3].
+step 2:- now array [2,5,8,1,3]  5 is smaller than 8 so the array remains same.
+step 3:-[2,5,8,1,3] now compare next two 8 and 1 now 8>1 so the swapping happens now 8 takes the
+        position of 1 and array becomes [2,5,1,8,3].
+step 4:-[2,5,1,8,3] 8 is greater than 3 so 8 takes the postion of 3 it becomes [2,5,1,3,8]
+        1st iteration is completed so we need to start second iteration of sorting. 
 
-Pass 2 :
-
-    Repeat the process for the remaining unsorted elements :
-Compare 2 and 5 : No swap needed.
-Compare 5 and 1 : Since 5 > 1, swap them : [2, 1, 5, 3, 8] .
-Compare 5 and 3 : Since 5 > 3, swap them : [2, 1, 3, 5, 8] .
-After Pass 2 : [2, 1, 3, 5, 8]
-
-Pass 3 :
-
-    Repeat the process :
-Compare 2 and 1 : Since 2 > 1, swap them : [1, 2, 3, 5, 8] .
-After Pass 3 : [1, 2, 3, 5, 8]
-
-Pass 4 :
-
-    No swaps needed as the array is already sorted.
-    After Pass 4 : [1, 2, 3, 5, 8]
-
-    The sorted array is[1, 2, 3, 5, 8].
-
-
+step 5:-in array [2,5,1,3,8] 2<5 so we dont need to swap and compare 5 and 1 where 5>1 we need to 
+        swap now array becomes [2,1,5,3,8]
+step 6:-[2,1,5,3,8] now 5>3 swap 5 and 3 it becomes [2,1,3,5,8] and compare 5 and 8 where 5<8 no 
+       need to swap.
+step 7:-2nd iteration is completed we need to start 3rd iteration array is[2,1,5,3,8] where 2>1 so we
+        need to swap 2 in position of 1 so the array becomes [1,2,5,3,8].
+step 8:- array [1,2,5,3,8] now compare 2 and 5 where 2<5 we dont need to swap. now compare 5 and 3
+         5>3 so we need to swap so array becomes [1,2,3,5,8]
   */ 
 
 /*Tracing the bubble sort algorithm step by step for the unsorted array[7, 4, 2, 9, 1]:
 
 2. Intermediate: Trace the Bubble Sort
+    
+    array=[7,4,2,9,1]
+    first pass:-
+    the largest element is placed at the end of the array
+                7>4 swapping  [4,7,2,9,1]
+                7>2 swapping  [4,2,7,9,1]
+                7<9 no swapping [4,2,7,9,1]
+                9>1 swapping [4,2,7,1,9]
 
-Pass 1 :
-
-    Start with the array[7, 4, 2, 9, 1].
-    Compare adjacent elements :
-Compare 7 and 4 : Since 7 > 4, swap them : [4, 7, 2, 9, 1] .
-Compare 7 and 2 : Since 7 > 2, swap them : [4, 2, 7, 9, 1] .
-Compare 7 and 9 : No swap needed.
-Compare 9 and 1 : Since 9 > 1, swap them : [4, 2, 7, 1, 9] .
-After Pass 1 : [4, 2, 7, 1, 9]
-
-Pass 2 :
-
-    Repeat the process for the remaining unsorted elements :
-Compare 4 and 2 : Since 4 > 2, swap them : [2, 4, 7, 1, 9] .
-Compare 4 and 7 : No swap needed.
-Compare 7 and 1 : Since 7 > 1, swap them : [2, 4, 1, 7, 9] .
-After Pass 2 : [2, 4, 1, 7, 9]
-
-Pass 3 :
-
-    Repeat the process :
-Compare 2 and 4 : No swap needed.
-Compare 4 and 1 : Since 4 > 1, swap them : [2, 1, 4, 7, 9] .
-After Pass 3 : [2, 1, 4, 7, 9]
-
-Pass 4 :
-
-    Repeat the process :
-Compare 2 and 1 : Since 2 > 1, swap them : [1, 2, 4, 7, 9] .
-After Pass 4 : [1, 2, 4, 7, 9]
-
-Pass 5 :
-
-    No swaps needed as the array is already sorted.
-    After Pass 5 : [1, 2, 4, 7, 9]
-
-    The sorted array is[1, 2, 4, 7, 9]
+    second pass:-
+    the second largest element is placed at the end now array is [4,2,7,1,9]
+               4>2 swapping [2,4,7,1,9]
+               4<7 no swapping [2,4,7,1,9]
+               7>1 swapping [2,4,1,7,9]
+               7<9 no swapping [2,4,1,7,9]
+    
+    Third pass:-
+      Now the array is [2,4,1,7,9]
+              2<4 no swapping [2,4,1,7,9]
+              4>1 swapping [2,1,4,7,9]
+              
+    Fourth Pass:-
+       Now the array is [2,1,4,7,9]
+          where 2>1 swapping [1,2,4,7,9]
 
 */
 
